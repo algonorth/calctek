@@ -1,0 +1,24 @@
+services:
+  php:
+    build:
+      target: ci
+      dockerfile: Dockerfile.php
+    volumes:
+      - .:/var/www/html/
+    depends_on:
+      - mysql
+  node:
+    build:
+      target: ci
+      dockerfile: Dockerfile.node
+    volumes:
+      - .:/usr/src/app/
+    working_dir: /usr/src/app/
+  mailpit:
+    image: axllent/mailpit
+  mysql:
+    environment:
+      MYSQL_ROOT_PASSWORD: "cirootpassword"
+      MYSQL_DATABASE: "cidatabase"
+      MYSQL_USER: "ciuser"
+      MYSQL_PASSWORD: "cipassword"

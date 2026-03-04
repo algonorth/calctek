@@ -1,0 +1,21 @@
+services:
+  traefik:
+    image: traefik:v3.6
+    healthcheck:
+      test: ["CMD", "traefik", "healthcheck"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+  php:
+    environment:
+      SSL_MODE: "full"
+    depends_on:
+      - traefik
+  mysql:
+    image: mysql:8.4
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u$$MYSQL_USER", "-p$$MYSQL_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
