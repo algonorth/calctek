@@ -24,7 +24,7 @@ Registers the four API routes under the /api prefix, wired to CalculationControl
 ## Frontend
 
 ### resources/views/app.blade.php
-The single Blade HTML shell. Sets class="dark" on <html>, loads the Inter font, includes the CSRF meta tag, and mounts Vite assets. The entire UI lives in <div id="app"> where Vue takes over.
+The single Blade HTML shell. Sets class="dark" on `<html>`, loads the Inter font, includes the CSRF meta tag, and mounts Vite assets. The entire UI lives in `<div id="app">` where Vue takes over.
 
 ### resources/js/components/App.vue
 Root Vue component. Renders the header (CalcTek logo + title) and the two-column grid layout, Calculator on the left, TickerTape on the right. Wires the @calculated event from Calculator to trigger a history refresh in TickerTape.
