@@ -3,19 +3,23 @@
 ## Backend
 
 	### database/migrations/2026_03_04_000001_create_calculations_table.php
-	Creates the calculations MySQL table with columns: id, expression (the string the user typed), result (decimal), and timestamps.
+
+	- Creates the calculations MySQL table with columns: id, expression (the string the user typed), result (decimal), and timestamps.
 
 
 	### app/Models/Calculation.php
-	Eloquent model for the calculations table. Declares expression and result as mass-assignable and casts result to a float.
+	
+	- Eloquent model for the calculations table. Declares expression and result as mass-assignable and casts result to a float.
 
 
 	### app/Services/ExpressionParser.php
-	The core math engine. A recursive-descent parser that safely evaluates expression strings, no eval() used. Supports +, -, *, /, ^ (power), sqrt(), parentheses, and negative numbers. Throws InvalidArgumentException on division by zero, sqrt of a negative, or invalid syntax.
+	
+	- The core math engine. A recursive-descent parser that safely evaluates expression strings, no eval() used. Supports +, -, *, /, ^ (power), sqrt(), parentheses, and negative numbers. Throws InvalidArgumentException on division by zero, sqrt of a negative, or invalid syntax.
 
 
 	### app/Http/Controllers/Api/CalculationController.php
-	Handles all four API endpoints:
+	
+	- Handles all four API endpoints:
 
 		calculate(): validates the expression, runs it through ExpressionParser, stores the result, returns JSON
 
@@ -27,7 +31,8 @@
 
 
 	### routes/api.php
-	Registers the four API routes under the /api prefix, wired to CalculationController.
+	
+	- Registers the four API routes under the /api prefix, wired to CalculationController.
 
 ## Frontend
 
